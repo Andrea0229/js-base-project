@@ -6,21 +6,22 @@ var sinonChai = require("sinon-chai");
 var expect = chai.expect;
 chai.use(sinonChai);
 
-var main = require("../lib/main.js");
+const getLyrics = require("../lib/getLyrics");
+var main = require("../lib/main");
 
 
-describe("测试描述", function(){
+describe("99 bottles of beer on the wall", function(){
     sinon.spy(console, 'log');
 
-    it("测试用例1", function(){
+    it("test1：测试返回所有歌词：", function(){
 
-        var result = main();
-        var expect_string = '';
-        
-        expect(expect_string).to.equal(result);
+        var result = main(99);
+        var expect_string = getLyrics();
+
+        expect(expect_string.join("")).to.equal(result.join(""));
     });
 
-    it("测试用例2", function(){
+    it("test2-测试函数中有返回值：", function(){
 
         main();
         var result = _.flatten(console.log.args).join("\n");
