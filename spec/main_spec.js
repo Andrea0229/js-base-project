@@ -14,9 +14,8 @@ describe("99 bottles of beer on the wall", function(){
     sinon.spy(console, 'log');
 
     it("test1：测试返回所有歌词", function(){
-
         var result = main(99);
-        var expect_string = getLyrics();
+        var expect_string = getLyrics(99);
 
         expect(expect_string.join("")).to.equal(result.join(""));
     });
@@ -27,4 +26,11 @@ describe("99 bottles of beer on the wall", function(){
 
         expect(expect_string).to.equal(result);
     });
+
+    it("test3:从56开始：", function () {
+        var result = main(56);
+        var expect_string = getLyrics(56);
+
+        expect(expect_string.join("")).to.equal(result.join(""));
+    })
 });
